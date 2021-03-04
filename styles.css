@@ -1,0 +1,139 @@
+/* Element Selectors */
+html,
+body,
+main {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+body {
+
+}
+
+section {
+
+}
+
+article {
+
+}
+
+div {
+
+}
+
+/* Columns */
+
+.star-column,
+.heart-column {
+
+}
+
+.star-column {
+
+}
+
+.heart-column {
+
+}
+
+.star-wins,
+.heart-wins {
+
+}
+
+.star-wins {
+
+}
+
+.heart-wins {
+
+}
+
+/* Game Board */
+
+.game-background {
+
+}
+
+.game-board {
+
+}
+
+/* Board Pieces */
+
+.a1,
+.a2,
+.a3,
+.b1,
+.b2,
+.b3,
+.c1,
+.c2,
+.c3 {
+
+}
+
+.a1 {
+
+}
+.a2 {
+
+}
+.a3 {
+
+}
+.b1 {
+
+}
+.b2 {
+
+}
+.b3 {
+
+}
+.c1 {
+
+}
+.c2 {
+
+}
+.c3 {
+
+}
+
+/*Board Lines */
+
+.line-1-2,
+.line-2-3 {
+
+}
+
+.line-a-b,
+.line-b-c {
+
+}
+
+.line-1-2 {
+
+}
+
+.line-2-3 {
+
+}
+
+.line-a-b {
+
+}
+
+.line-b-c {
+
+}
