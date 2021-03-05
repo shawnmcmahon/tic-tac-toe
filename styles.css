@@ -4,6 +4,9 @@ body,
 main {
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 h1 {
@@ -11,29 +14,38 @@ h1 {
 }
 
 h2 {
+  display: flex;
+  padding-top: 20px;
 
 }
 
 body {
-
+  display: flex;
+  flex-direction: row;
 }
 
 section {
+  display: flex;
 
 }
 
 article {
-
+  display: flex;
+  height: 50px;
+  width: 50px;
 }
 
 div {
-
+  display: flex;
 }
 
 /* Columns */
 
 .star-column,
 .heart-column {
+  height: 100%
+  width: 25%
+  justify-content: center;
 
 }
 
@@ -42,6 +54,7 @@ div {
 }
 
 .heart-column {
+  flex-direction: row-reverse;
 
 }
 
@@ -61,11 +74,31 @@ div {
 /* Game Board */
 
 .game-background {
+  background-color: blue;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
 
 }
 
 .game-board {
+  background-color: green;
+  width: 40%:
+  height: 40%:
+  flex-wrap: wrap;
 
+}
+
+.a-container {
+  align-items: flex-start;
+}
+
+.b-container {
+  align-items: center;
+}
+
+.c-container {
+  align-items: flex-end;
 }
 
 /* Board Pieces */
@@ -114,12 +147,15 @@ div {
 
 .line-1-2,
 .line-2-3 {
-
+  background-color: red;
+  height: 300px;
 }
 
 .line-a-b,
 .line-b-c {
-
+  background-color: red;
+  width: 40%
+  height: 5%
 }
 
 .line-1-2 {
