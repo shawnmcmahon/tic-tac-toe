@@ -21,7 +21,7 @@ class Game {
           return "Pick an available square Heart Player";
         }
       }
-    } else if (this.StarTurn) {
+    } else if (this.starTurn) {
         for (var i = 0; i < this.gameArray.length; i++) {
           if (this.gameArray.includes(square)) {
             var playersChoosenSqaure = this.gameArray.splice(i , 1);
