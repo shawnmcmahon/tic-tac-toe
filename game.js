@@ -10,7 +10,7 @@ class Game {
 
   }
 
-  playTurn(square) {
+  //playTurn(square) {
     // if (this.heartTurn) {
     //   for (var i = 0; i < this.gameArray.length; i++) {
     //     if (this.gameArray.includes(square)) {
@@ -38,10 +38,10 @@ class Game {
 
 
 
-    }
 
 
-  }
+
+  //}
 
   checkForWinner() {
     if(this.heartMoves.includes("a1") && this.heartMoves.includes("a2") && this.heartMoves.includes("a3") ||
@@ -52,10 +52,10 @@ class Game {
        this.heartMoves.includes("a3") && this.heartMoves.includes("b3") && this.heartMoves.includes("c3") ||
        this.heartMoves.includes("a1") && this.heartMoves.includes("b2") && this.heartMoves.includes("c3") ||
        this.heartMoves.includes("c1") && this.heartMoves.includes("b2") && this.heartMoves.includes("a3")) {
-         playerHeart.wins++;
+         this.playerHeart.wins++;
          console.log('Heart player wins!');
          //(need to send message to h1 that heart wins)
-         resetGame();
+         //resetGame();
        } else if (this.starMoves.includes("a1") && this.starMoves.includes("a2") && this.starMoves.includes("a3") ||
           this.starMoves.includes("b1") && this.starMoves.includes("b2") && this.starMoves.includes("b3") ||
           this.starMoves.includes("c1") && this.starMoves.includes("c2") && this.starMoves.includes("c3") ||
@@ -64,22 +64,22 @@ class Game {
           this.starMoves.includes("a3") && this.starMoves.includes("b3") && this.starMoves.includes("c3") ||
           this.starMoves.includes("a1") && this.starMoves.includes("b2") && this.starMoves.includes("c3") ||
           this.starMoves.includes("c1") && this.starMoves.includes("b2") && this.starMoves.includes("a3")) {
-            playerStar.wins++;
+            this.playerStar.wins++;
             console.log('Star player wins');
             //(need to send message to h1 that star wins)
-            resetGame();
+            //resetGame();
           } else if(this.gameArray === []) {
             console.log('The game is a tie!')
-            resetGame();
+            //resetGame();
           }
   }
 
-  resetGame() {
-    this.heartMoves = [];
-    this.starMoves = [];
-    this.GameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
-
-  }
+  // resetGame() {
+  //   this.heartMoves = [];
+  //   this.starMoves = [];
+  //   this.GameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
+  //
+  // }
 
 
 }
