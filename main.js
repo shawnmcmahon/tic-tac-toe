@@ -24,41 +24,95 @@ c3.addEventListener('click', playerTakeSquare);
 
 //variables
 
-var newGame = new Game();
+var newGame = new Game({heartTurn: true, starTurn: false,
+                        gameArray: ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"],
+                        heartMoves:[], starMoves:[]});
 
 
 //functions
 
 function playerTakeSquare(square) {
-  if (this.heartTurn) {
-  //   for (var i = 0; i < this.gameArray.length; i++) {
-  //     if (this.gameArray.includes(square)) {
-  //       var playersChoosenSquare = this.gameArray.splice(i , 1);
-  //       this.heartMoves.push(playersChoosenSquare);
-  //       console.log('Heart squares are', this.heartMoves)
-  //       this.heartTurn = false;
-  //       this.StarTurn = true;
-  //     } else {
-  //       return "Pick an available square Heart Player";
-  //     }
-  //   }
-  // } else if (this.starTurn) {
-  //     for (var i = 0; i < this.gameArray.length; i++) {
-  //       if (this.gameArray.includes(square)) {
-  //         var playersChoosenSquare = this.gameArray.splice(i , 1);
-  //         this.starMoves.push(playersChoosenSquare);
-  //         console.log('Star squares are', this.starMoves)
-  //         this.starTurn = false;
-  //         this.heartTurn = true;
-  //     } else {
-  //       return "Pick an available square Star Player";
-  //     }
-  //   }
+  //var square = event.target.closest('.button');
+  // use index of to locate the square in the gameArray
+   if (newGame.heartTurn) {
+    var selectedSquareIndex = newGame.gameArray.indexOf(square);
 
 
-  checkForWinner();
+
+  //using indexOF splice at position index
+    newGame.gameArray.splice(selectedSquareIndex, 1);
+    //console.log('game array', newGame.gameArray);
+
+  //push b2 into heart/star array
+    newGame.heartMoves.push(square);
+
+  //check for a win using our checkForWinner function;
+  newGame.checkForWinner();
+
+  //switch turns
+    newGame.heartTurn = false;
+    newGame.starTurn = true;
 
 
+  } else if(newGame.starTurn) {
+    //console.log("hey");
+    var selectedSquareIndex = newGame.gameArray.indexOf(square);
+    //console.log('selectedSquareIndex', selectedSquareIndex);
+
+
+  //using indexOF splice at position index
+    newGame.gameArray.splice(selectedSquareIndex, 1);
+    //console.log('game array', newGame.gameArray);
+
+  //push b2 into heart/star array
+    newGame.starMoves.push(square);
+    //console.log('starMoves', newGame.starMoves);
+
+  //check for a win using our checkForWinner function;
+    newGame.checkForWinner();
+
+  //switch turns
+    newGame.starTurn = false;
+    newGame.heartTurn = true;
+  }
+
+}
+//   if (newGame.heartTurn) {
+//     for (var i = 0; i < newGame.gameArray.length; i++) {
+//       if (newGame.gameArray[i] === square) {
+//         var playersChoosenSquare = newGame.gameArray.splice(i , 1);
+//         console.log(playersChoosenSquare);
+//         var stringPlayersChoice = playersChoosenSquare.toString();
+//         newGame.heartMoves.push(stringPlayersChoice);
+//         //square.innerText = "HHH";
+//         console.log('Heart squares are', newGame.heartMoves)
+//         newGame.heartTurn = false;
+//         newGame.starTurn = true;
+//       } else {
+//         return "Pick an available square Heart Player";
+//       }
+//     }
+//   } else if (newGame.starTurn) {
+//       for (var i = 0; i < newGame.gameArray.length; i++) {
+//         if (newGame.gameArray.includes(square)) {
+//           var playersChoosenSquare = newGame.gameArray.splice(i , 1);
+//           var stringPlayersChoice = playersChoosenSquare.toString();
+//           newGame.starMoves.push(stringPlayersChoice);
+//           console.log('Star squares are', newGame.starMoves)
+//           //square.innerText = "SSS";
+//           newGame.starTurn = false;
+//           newGame.heartTurn = true;
+//       } else {
+//         return "Pick an available square Star Player";
+//       }
+//     }
+//
+//
+//
+//
+// }
+//   //checkForWinner();
+// }
 
   //event target.
   // var clickedSquare = event.target.closest('.button');
@@ -71,6 +125,3 @@ function playerTakeSquare(square) {
   // declareWinner();
 
 //run win check after the turn.
-
-
-}
