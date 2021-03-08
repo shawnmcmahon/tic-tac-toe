@@ -34,7 +34,7 @@ var newGame = new Game({heartTurn: true, starTurn: false,
 function playerTakeSquare(square) {
   //var square = event.target.closest('.button');
   // use index of to locate the square in the gameArray
-   if (newGame.heartTurn) {
+   if (newGame.heartTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
 
 
@@ -54,7 +54,7 @@ function playerTakeSquare(square) {
     newGame.starTurn = true;
 
 
-  } else if(newGame.starTurn) {
+  } else if(newGame.starTurn && newGame.gameArray.includes(square)) {
     //console.log("hey");
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
     //console.log('selectedSquareIndex', selectedSquareIndex);
@@ -74,6 +74,9 @@ function playerTakeSquare(square) {
   //switch turns
     newGame.starTurn = false;
     newGame.heartTurn = true;
+  } else if (!newGame.gameArray.includes(square)) {
+    console.log("please pick an available square");
+    return "please pick an available square";
   }
 
 }
