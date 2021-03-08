@@ -9,17 +9,12 @@ var c1 = document.querySelector('#c1');
 var c2 = document.querySelector('#c2');
 var c3 = document.querySelector('#c3');
 
+var gameBoard = document.querySelector('#gameBoard');
+
 
 //eventListeners
-a1.addEventListener('click', playerTakeSquare);
-a2.addEventListener('click', playerTakeSquare);
-a3.addEventListener('click', playerTakeSquare);
-b1.addEventListener('click', playerTakeSquare);
-b2.addEventListener('click', playerTakeSquare);
-b3.addEventListener('click', playerTakeSquare);
-c1.addEventListener('click', playerTakeSquare);
-c2.addEventListener('click', playerTakeSquare);
-c3.addEventListener('click', playerTakeSquare);
+
+gameBoard.addEventListener('click', playerTakeSquare);
 
 
 //variables
@@ -31,7 +26,10 @@ var newGame = new Game({heartTurn: true, starTurn: false,
 
 //functions
 
-function playerTakeSquare(square) {
+function playerTakeSquare(event, square) {
+  console.log(event.target);
+  var square = event.target.id;
+  console.log(square);
   //var square = event.target.closest('.button');
   // use index of to locate the square in the gameArray
    if (newGame.heartTurn && newGame.gameArray.includes(square)) {
@@ -45,6 +43,8 @@ function playerTakeSquare(square) {
 
   //push b2 into heart/star array
     newGame.heartMoves.push(square);
+
+  //changer innerText if taken square
 
   //check for a win using our checkForWinner function;
   newGame.checkForWinner();
