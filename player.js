@@ -1,8 +1,8 @@
 class Player {
-  constructor(detail) {
+  constructor(details) {
     this.playerID = details.playerID;
     this.token = details.token;
-    this.wins = details.wins;
+    this.wins = details.wins || 0;
   }
 
   saveWinstoStore() {
@@ -10,8 +10,6 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    
+
   }
 }
-
-exports.module = Player;
