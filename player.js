@@ -1,3 +1,5 @@
+var newWinArray = [];
+
 class Player {
   constructor(details) {
     this.playerID = details.playerID;
@@ -6,10 +8,11 @@ class Player {
   }
 
   saveWinstoStore() {
-
+    localStorage.setItem(this.playerID, this.wins);
   }
 
   retrieveWinsFromStorage() {
-
+    var retrieveWins = localStorage.getItem(this.playerID);
+    return retrieveWins;
   }
 }
