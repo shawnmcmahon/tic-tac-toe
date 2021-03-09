@@ -36,6 +36,8 @@ function playerTakeSquare(event, square) {
   var square = event.target.id;
   console.log(square);
 
+
+
   if(newGame.heartTurn) {
     referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
   } else if(newGame.starTurn) {
@@ -56,6 +58,9 @@ function playerTakeSquare(event, square) {
 
   //push b2 into heart/star array
     newGame.heartMoves.push(square);
+
+  //change button style to player style
+  document.getElementById(square).innerText = `${newGame.playerHeart.token}`;
 
   //changer innerText if taken square
 
@@ -81,6 +86,10 @@ function playerTakeSquare(event, square) {
   //push b2 into heart/star array
     newGame.starMoves.push(square);
     //console.log('starMoves', newGame.starMoves);
+
+    //change button style to player style
+    document.getElementById(square).innerText = `${newGame.playerStar.token}`;
+
 
   //check for a win using our checkForWinner function;
     newGame.checkForWinner();

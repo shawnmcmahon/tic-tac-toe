@@ -5,8 +5,8 @@ class Game {
     this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
     this.heartMoves = [];
     this.starMoves = [];
-    this.playerHeart = new Player({playerID: "heart", token: "Heart", wins: 0});
-    this.playerStar = new Player({playerID: "star", token: "Star", wins: 0});
+    this.playerHeart = new Player({playerID: "heart", token: 	"hhh", wins: 0});
+    this.playerStar = new Player({playerID: "star", token: "sss", wins: 0});
 
   }
 
