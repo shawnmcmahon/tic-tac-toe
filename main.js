@@ -17,9 +17,13 @@ var starScore = document.querySelector('#starWins');
 
 var referee = document.querySelector('#referee');
 
+
+
 //eventListeners
 
 gameBoard.addEventListener('click', playerTakeSquare);
+
+window.addEventListener('load', retrieveWins);
 
 
 //variables
@@ -106,3 +110,16 @@ function playerTakeSquare(event, square) {
   }
 
 }
+
+function retrieveWins() {
+  var savedHeartWins = newGame.playerHeart.retrieveWinsFromStorage();
+  var savedStarWins = newGame.playerStar.retrieveWinsFromStorage();
+  console.log('saved heart wins', savedHeartWins);
+  console.log('saved star wins', savedStarWins);
+
+  newGame.playerHeart.wins = savedHeartWins;
+  newGame.playerStar.wins = savedStarWins;
+
+  heartScore.innerHTML = `Heart player has ${newGame.playerHeart.wins} wins`;
+  starScore.innerHTML = `Star player has ${newGame.playerStar.wins} wins`;
+ }

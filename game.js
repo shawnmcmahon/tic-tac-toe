@@ -24,7 +24,7 @@ class Game {
        this.heartMoves.includes("a1") && this.heartMoves.includes("b2") && this.heartMoves.includes("c3") ||
        this.heartMoves.includes("c1") && this.heartMoves.includes("b2") && this.heartMoves.includes("a3")) {
          this.playerHeart.wins++;
-         //playerHeart.saveToStorage();
+         this.playerHeart.saveWinsToStorage();
          console.log('Heart player wins!');
          //all dom manipulation has to be inside main.js
          heartScore.innerHTML = `Heart player has ${this.playerHeart.wins} wins`;
@@ -42,7 +42,7 @@ class Game {
           this.starMoves.includes("a1") && this.starMoves.includes("b2") && this.starMoves.includes("c3") ||
           this.starMoves.includes("c1") && this.starMoves.includes("b2") && this.starMoves.includes("a3")) {
             this.playerStar.wins++;
-            //playerStar.saveToStorage();
+            this.playerStar.saveWinsToStorage();
             console.log('Star player wins');
             //all dom manipulation has to be inside main.js
             referee.innerHTML = `${this.playerStar.token} won!`;
