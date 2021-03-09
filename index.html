@@ -4,33 +4,28 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main>
       <section class="star-column">
-        <h2 class="star-wins">Star Wins</h2>
+        <h2 class="star-wins" id="starWins">Star Wins</h2>
       </section>
       <section class="game-background">
-        <section class="game-board">
-          <section class="a-container">
-            <article class="a1">a1</article>
-            <article class="a2">a2</article>
-            <article class="a3">a3</article>
+        <h1 class="referee" id="referee">referee</h1>
+          <section class="game-board" id="gameBoard">
+            <button class="a1" id="a1">a1</button>
+            <button class="a2" id="a2">a2</button>
+            <button class="a3" id="a3">a3</button>
+            <button class="b1" id="b1">b1</button>
+            <button class="b2" id="b2">b2</button>
+            <button class="b3" id="b3">b3</button>
+            <button class="c1" id="c1">c1</button>
+            <button class="c2" id="c2">c2</button>
+            <button class="c3" id="c3">c3</button>
           </section>
-          <section class="b-container">
-            <br>
-            <article class="b1">b1</article>
-            <article class="b2">b2</article>
-            <article class="b3">b3</article>
-          </section>
-          <section class="c-container">
-            <article class="c1">c1</article>
-            <article class="c2">c2</article>
-            <article class="c3">c3</article>
-          </section>
-        </section>
       </section>
       <section class="heart-column">
-        <h2 class="heart-wins">Heart wins</h2>
+        <h2 class="heart-wins" id="heartWins">Heart wins</h2>
       </section>
-    </main>
   </body>
+  <script src="player.js"></script>
+  <script src="game.js"></script>
+  <script src="main.js"></script>
 </html>
