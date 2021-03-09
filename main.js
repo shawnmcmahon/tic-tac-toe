@@ -15,6 +15,8 @@ var gameBoard = document.querySelector('#gameBoard');
 var heartScore = document.querySelector('#heartWins');
 var starScore = document.querySelector('#starWins');
 
+var referee = document.querySelector('#referee');
+
 //eventListeners
 
 gameBoard.addEventListener('click', playerTakeSquare);
@@ -33,6 +35,14 @@ function playerTakeSquare(event, square) {
   console.log(event.target);
   var square = event.target.id;
   console.log(square);
+
+  if(newGame.heartTurn) {
+    referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
+  } else if(newGame.starTurn) {
+    referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
+  }
+
+
   //var square = event.target.closest('.button');
   // use index of to locate the square in the gameArray
    if (newGame.heartTurn && newGame.gameArray.includes(square)) {
@@ -76,7 +86,7 @@ function playerTakeSquare(event, square) {
     newGame.checkForWinner();
 
     //changer innerText if taken square
-    
+
 
   //switch turns
     newGame.starTurn = false;

@@ -5,8 +5,8 @@ class Game {
     this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
     this.heartMoves = [];
     this.starMoves = [];
-    this.playerHeart = new Player({playerID: "heart", token: "HHH", wins: 0});
-    this.playerStar = new Player({playerID: "star", token: "SSS", wins: 0});
+    this.playerHeart = new Player({playerID: "heart", token: "Heart", wins: 0});
+    this.playerStar = new Player({playerID: "star", token: "Star", wins: 0});
 
   }
 
@@ -46,7 +46,7 @@ class Game {
   checkForWinner() {
     var heartScore = document.querySelector('#heartWins');
     var starScore = document.querySelector('#starWins');
-
+    var referee = document.querySelector('#referee');
 
     if(this.heartMoves.includes("a1") && this.heartMoves.includes("a2") && this.heartMoves.includes("a3") ||
        this.heartMoves.includes("b1") && this.heartMoves.includes("b2") && this.heartMoves.includes("b3") ||
@@ -59,6 +59,7 @@ class Game {
          this.playerHeart.wins++;
          console.log('Heart player wins!');
          heartScore.innerHTML = `Heart player has ${this.playerHeart.wins} wins`;
+         referee.innerHTML = `${this.playerHeart.token} won!`;
          //reset game
          this.heartMoves = [];
          this.starMoves = [];
@@ -73,6 +74,7 @@ class Game {
           this.starMoves.includes("c1") && this.starMoves.includes("b2") && this.starMoves.includes("a3")) {
             this.playerStar.wins++;
             console.log('Star player wins');
+            referee.innerHTML = `${this.playerStar.token} won!`;
             starScore.innerHTML = `Star player has ${this.playerStar.wins} wins`;
             //reset game
             this.heartMoves = [];
