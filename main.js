@@ -40,12 +40,16 @@ function playerTakeSquare(event, square) {
   var square = event.target.id;
   console.log(square);
 
-
-
   if(newGame.heartTurn) {
     referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
   } else if(newGame.starTurn) {
     referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
+  } else if (newGame.heartWinDeclared) {
+    referee.innerHTML = `${newGame.playerHeart.token} won!`;
+    newGame.resetGame();
+  } else if (newGame.starWinDeclared) {
+    referee.innerHTML = `${newGame.playerStar.token} won!`;
+    newGame.resetGame();
   }
 
 
@@ -53,57 +57,32 @@ function playerTakeSquare(event, square) {
   // use index of to locate the square in the gameArray
    if (newGame.heartTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
-
-
-
   //using indexOF splice at position index
     newGame.gameArray.splice(selectedSquareIndex, 1);
     //console.log('game array', newGame.gameArray);
-
   //push b2 into heart/star array
     newGame.heartMoves.push(square);
-
   //change button style to player style
-  document.getElementById(square).innerText = `${newGame.playerHeart.token}`;
-
-  //changer innerText if taken square
-
-
+    document.getElementById(square).innerText = `${newGame.playerHeart.token}`;
   //check for a win using our checkForWinner function;
-  newGame.checkForWinner();
-
+    newGame.checkForWinner();
   //switch turns
     newGame.heartTurn = false;
     newGame.starTurn = true;
-
-
   } else if(newGame.starTurn && newGame.gameArray.includes(square)) {
-    //console.log("hey");
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
-    //console.log('selectedSquareIndex', selectedSquareIndex);
-
-
   //using indexOF splice at position index
     newGame.gameArray.splice(selectedSquareIndex, 1);
-    //console.log('game array', newGame.gameArray);
-
   //push b2 into heart/star array
     newGame.starMoves.push(square);
-    //console.log('starMoves', newGame.starMoves);
-
     //change button style to player style
     document.getElementById(square).innerText = `${newGame.playerStar.token}`;
-
-
   //check for a win using our checkForWinner function;
     newGame.checkForWinner();
-
-    //changer innerText if taken square
-
-
   //switch turns
     newGame.starTurn = false;
     newGame.heartTurn = true;
+
   } else if (!newGame.gameArray.includes(square)) {
     console.log('please pick an available square');
     return 'please pick an available square';
