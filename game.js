@@ -78,9 +78,8 @@ class Game {
             this.heartMoves = [];
             this.starMoves = [];
             this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
-          } else if(this.gameArray === []) {
+          } else if(this.gameArray.length === 0) {
             console.log('The game is a tie!')
-            //reset game
             this.heartMoves = [];
             this.starMoves = [];
             this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
