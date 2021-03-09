@@ -12,6 +12,9 @@ var c3 = document.querySelector('#c3');
 var gameBoard = document.querySelector('#gameBoard');
 
 
+var heartScore = document.querySelector('#heartWins');
+var starScore = document.querySelector('#starWins');
+
 //eventListeners
 
 gameBoard.addEventListener('click', playerTakeSquare);
@@ -20,7 +23,7 @@ gameBoard.addEventListener('click', playerTakeSquare);
 //variables
 
 var newGame = new Game({heartTurn: true, starTurn: false,
-                        gameArray: ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"],
+                        gameArray: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
                         heartMoves:[], starMoves:[]});
 
 
@@ -45,6 +48,7 @@ function playerTakeSquare(event, square) {
     newGame.heartMoves.push(square);
 
   //changer innerText if taken square
+
 
   //check for a win using our checkForWinner function;
   newGame.checkForWinner();
@@ -71,15 +75,22 @@ function playerTakeSquare(event, square) {
   //check for a win using our checkForWinner function;
     newGame.checkForWinner();
 
+    //changer innerText if taken square
+    
+
   //switch turns
     newGame.starTurn = false;
     newGame.heartTurn = true;
   } else if (!newGame.gameArray.includes(square)) {
-    console.log("please pick an available square");
-    return "please pick an available square";
+    console.log('please pick an available square');
+    return 'please pick an available square';
   }
 
 }
+
+
+
+
 //   if (newGame.heartTurn) {
 //     for (var i = 0; i < newGame.gameArray.length; i++) {
 //       if (newGame.gameArray[i] === square) {
