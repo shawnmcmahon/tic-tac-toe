@@ -31,12 +31,9 @@ section {
 
 }
 
-article {
-  height: 10px;
-  width: 10px;
-}
 
-div {
+button {
+  background-color: white;
 
 }
 
@@ -77,9 +74,10 @@ div {
 .game-background {
   background-color: white;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
   height: 100vh;
   weight: 50vw;
+  align-items: center;
 
 
 }
@@ -98,23 +96,6 @@ div {
 
 
 /* Board Pieces */
-
-.a1,
-.a2,
-.a3 {
-
-
-
-}
-
-
-.b1,
-.b2,
-.b3  {
-
-align-items: center;
-
-}
 
 .a1 {
   grid-area: 1 / 1 / 2 / 2;
@@ -181,33 +162,4 @@ align-items: center;
 
 .star-square {
   background-image: url('assets/star.png');
-}
-
-/*Board Lines */
-
-.line-1-2,
-.line-2-3 {
-  background-color: red;
-  height: 300px;
-}
-
-.line-a-b,
-.line-b-c {
-
-}
-
-.line-1-2 {
-
-}
-
-.line-2-3 {
-
-}
-
-.line-a-b {
-
-}
-
-.line-b-c {
-
 }
