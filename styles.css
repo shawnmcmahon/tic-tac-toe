@@ -2,14 +2,16 @@
 html,
 body,
 main {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 h1 {
+  display: flex;
+  justify-content: flex-start;
 
 }
 
@@ -30,32 +32,31 @@ section {
 }
 
 article {
-  display: flex;
-  height: 50px;
-  width: 50px;
+  height: 10px;
+  width: 10px;
 }
 
 div {
-  display: flex;
+
 }
 
 /* Columns */
 
 .star-column,
 .heart-column {
-  height: 100%
-  width: 25%
+  height: 100%;
+  width: 25%;
   justify-content: center;
 
 }
 
 .star-column {
+  background: linear-gradient(#A4FEFA, #FF83D3);
 
 }
 
 .heart-column {
-  flex-direction: row-reverse;
-
+  background: linear-gradient(#A4FEFA, #FF83D3);
 }
 
 .star-wins,
@@ -74,73 +75,63 @@ div {
 /* Game Board */
 
 .game-background {
-  background-color: blue;
+  background-color: white;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  height: 100vh;
+  weight: 50vw;
+
 
 }
 
 .game-board {
-  background-color: green;
-  width: 40%:
-  height: 40%:
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 300px;
+  height: 300px;
+
 
 }
 
-.a-container {
-  align-items: flex-start;
-}
-
-.b-container {
-  align-items: center;
-}
-
-.c-container {
-  align-items: flex-end;
-}
 
 /* Board Pieces */
 
 .a1,
 .a2,
-.a3,
-.b1,
-.b2,
-.b3,
-.c1,
-.c2,
-.c3 {
-
-}
-
-.a1 {
-
-}
-.a2 {
-
-}
 .a3 {
 
-}
-.b1 {
+
 
 }
-.b2 {
+
+
+.b1,
+.b2,
+.b3  {
+
+align-items: center;
 
 }
-.b3 {
 
+.a1 { grid-area: 1 / 1 / 2 / 2; }
+.a2 { grid-area: 1 / 2 / 2 / 3; }
+.a3 { grid-area: 1 / 3 / 2 / 4; }
+.b1 { grid-area: 2 / 1 / 3 / 2; }
+.b2 { grid-area: 2 / 2 / 3 / 3; }
+.b3 { grid-area: 2 / 3 / 3 / 4; }
+.c1 { grid-area: 3 / 1 / 4 / 2; }
+.c2 { grid-area: 3 / 2 / 4 / 3; }
+.c3 { grid-area: 3 / 3 / 4 / 4; }
+
+.heart-square {
+  background-image: url('assets/heart.png');
 }
-.c1 {
 
-}
-.c2 {
-
-}
-.c3 {
-
+.star-square {
+  background-image: url('assets/star.png');
 }
 
 /*Board Lines */
@@ -153,9 +144,7 @@ div {
 
 .line-a-b,
 .line-b-c {
-  background-color: red;
-  width: 40%
-  height: 5%
+
 }
 
 .line-1-2 {

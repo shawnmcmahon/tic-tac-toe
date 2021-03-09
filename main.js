@@ -9,32 +9,45 @@ var c1 = document.querySelector('#c1');
 var c2 = document.querySelector('#c2');
 var c3 = document.querySelector('#c3');
 
+var gameBoard = document.querySelector('#gameBoard');
+
+
+var heartScore = document.querySelector('#heartWins');
+var starScore = document.querySelector('#starWins');
+
+var referee = document.querySelector('#referee');
 
 //eventListeners
-a1.addEventListener('click', playerTakeSquare);
-a2.addEventListener('click', playerTakeSquare);
-a3.addEventListener('click', playerTakeSquare);
-b1.addEventListener('click', playerTakeSquare);
-b2.addEventListener('click', playerTakeSquare);
-b3.addEventListener('click', playerTakeSquare);
-c1.addEventListener('click', playerTakeSquare);
-c2.addEventListener('click', playerTakeSquare);
-c3.addEventListener('click', playerTakeSquare);
+
+gameBoard.addEventListener('click', playerTakeSquare);
 
 
 //variables
 
 var newGame = new Game({heartTurn: true, starTurn: false,
-                        gameArray: ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"],
+                        gameArray: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
                         heartMoves:[], starMoves:[]});
 
 
 //functions
 
-function playerTakeSquare(square) {
+function playerTakeSquare(event, square) {
+  console.log(event.target);
+  var square = event.target.id;
+  console.log(square);
+
+
+
+  if(newGame.heartTurn) {
+    referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
+  } else if(newGame.starTurn) {
+    referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
+  }
+
+
   //var square = event.target.closest('.button');
   // use index of to locate the square in the gameArray
-   if (newGame.heartTurn) {
+   if (newGame.heartTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
 
 
@@ -46,6 +59,12 @@ function playerTakeSquare(square) {
   //push b2 into heart/star array
     newGame.heartMoves.push(square);
 
+  //change button style to player style
+  document.getElementById(square).innerText = `${newGame.playerHeart.token}`;
+
+  //changer innerText if taken square
+
+
   //check for a win using our checkForWinner function;
   newGame.checkForWinner();
 
@@ -54,7 +73,7 @@ function playerTakeSquare(square) {
     newGame.starTurn = true;
 
 
-  } else if(newGame.starTurn) {
+  } else if(newGame.starTurn && newGame.gameArray.includes(square)) {
     //console.log("hey");
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
     //console.log('selectedSquareIndex', selectedSquareIndex);
@@ -68,15 +87,29 @@ function playerTakeSquare(square) {
     newGame.starMoves.push(square);
     //console.log('starMoves', newGame.starMoves);
 
+    //change button style to player style
+    document.getElementById(square).innerText = `${newGame.playerStar.token}`;
+
+
   //check for a win using our checkForWinner function;
     newGame.checkForWinner();
+
+    //changer innerText if taken square
+
 
   //switch turns
     newGame.starTurn = false;
     newGame.heartTurn = true;
+  } else if (!newGame.gameArray.includes(square)) {
+    console.log('please pick an available square');
+    return 'please pick an available square';
   }
 
 }
+
+
+
+
 //   if (newGame.heartTurn) {
 //     for (var i = 0; i < newGame.gameArray.length; i++) {
 //       if (newGame.gameArray[i] === square) {
