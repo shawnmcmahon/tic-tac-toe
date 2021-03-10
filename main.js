@@ -11,10 +11,11 @@ var gameBoard = document.querySelector('#gameBoard');
 var heartScore = document.querySelector('#heartWins');
 var starScore = document.querySelector('#starWins');
 var referee = document.querySelector('#referee');
-//variables
+
 var newGame = new Game({heartTurn: true, starTurn: false,
                         gameArray: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
                         heartMoves:[], starMoves:[]});
+var timeoutID;
 
 
 gameBoard.addEventListener('click', playerTakeSquare);
@@ -22,7 +23,6 @@ window.addEventListener('load', retrieveWins);
 
 function playerTakeSquare(event, square) {
   var square = event.target.id;
-  renderGameBoard();
   updateReferee();
   if (newGame.heartTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
@@ -41,10 +41,11 @@ function playerTakeSquare(event, square) {
     newGame.starTurn = false;
     newGame.heartTurn = true;
   } else if (!newGame.gameArray.includes(square)) {
-    referee.innerText =  'Please pick an available square';
+    referee.innerText =  'Pick an available square';
   }
 
   declareResult();
+  setTimeout(function() {renderGameBoard();}, 1*3000);
   retrieveWins();
 }
 
@@ -106,8 +107,8 @@ function declareResult() {
     referee.innerText = `${newGame.playerStar.token} won!`;
     newGame.resetGame();
   } else if (newGame.gameArray.length === 0) {
-    newGame.resetGame();
     referee.innerText = 'It\'s a draw!';
+    newGame.resetGame();
   }
 
 }
