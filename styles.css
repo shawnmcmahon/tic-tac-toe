@@ -21,6 +21,14 @@ h2 {
 
 }
 
+h3 {
+  display: flex;
+  font-size: 3rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0px;
+}
+
 body {
   display: flex;
   flex-direction: row;
@@ -28,6 +36,7 @@ body {
 
 section {
   display: flex;
+  flex-direction: row;
 
 }
 
@@ -35,6 +44,8 @@ section {
 button {
   background-color: white;
   outline: none;
+  font-size: 5rem;
+  border: none;
 
 }
 
@@ -44,7 +55,8 @@ button {
 .heart-column {
   height: 100%;
   width: 25%;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
 }
 
@@ -90,7 +102,7 @@ button {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: 75vh;
-  width: 50vw;
+  width: 40vw;
 
 
 }

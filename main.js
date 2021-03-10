@@ -8,88 +8,40 @@ var b3 = document.querySelector('#b3');
 var c1 = document.querySelector('#c1');
 var c2 = document.querySelector('#c2');
 var c3 = document.querySelector('#c3');
-
 var gameBoard = document.querySelector('#gameBoard');
-
-
 var heartScore = document.querySelector('#heartWins');
 var starScore = document.querySelector('#starWins');
-
 var referee = document.querySelector('#referee');
-
-
-
-//eventListeners
-
-gameBoard.addEventListener('click', playerTakeSquare);
-
-window.addEventListener('load', retrieveWins);
-
-
-//variables
-
 var newGame = new Game({heartTurn: true, starTurn: false,
                         gameArray: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
                         heartMoves:[], starMoves:[]});
 
+//eventListeners
+gameBoard.addEventListener('click', playerTakeSquare);
+window.addEventListener('load', retrieveWins);
 
 //functions
-
 function playerTakeSquare(event, square) {
-
   var square = event.target.id;
 
-
-  if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
-    referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
-  } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
-    referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
-  }
-
-
-  //var square = event.target.closest('.button');
-  // use index of to locate the square in the gameArray
-   if (newGame.heartTurn && newGame.gameArray.includes(square)) {
+  updateReferee();
+  if (newGame.heartTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
-  //using indexOF splice at position index
     newGame.gameArray.splice(selectedSquareIndex, 1);
-    //console.log('game array', newGame.gameArray);
-  //push b2 into heart/star array
     newGame.heartMoves.push(square);
-  //change button style to player style
     document.getElementById(square).innerText = `${newGame.playerHeart.token}`;
-
-  //check for a win using our checkForWinner function;
     newGame.checkForWinner();
-
-    //  if (newGame.heartWinDeclared) {
-    //   referee.innerText = `${newGame.playerHeart.token} won!`;
-    //   newGame.resetGame();
-    // }
-  //switch turns
     newGame.heartTurn = false;
     newGame.starTurn = true;
   } else if(newGame.starTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
-  //using indexOF splice at position index
     newGame.gameArray.splice(selectedSquareIndex, 1);
-  //push b2 into heart/star array
     newGame.starMoves.push(square);
-    //change button style to player style
     document.getElementById(square).innerText = `${newGame.playerStar.token}`;
-    //update the dom to reflect the data model
-    //renderGameBoard();
-  //check for a win using our checkForWinner function;
     newGame.checkForWinner();
-    // if (newGame.starWinDeclared) {
-    //   referee.innerText = `${newGame.playerStar.token} won!`;
-    //   newGame.resetGame();
-    // }
-  //switch turns
     newGame.starTurn = false;
     newGame.heartTurn = true;
   } else if (!newGame.gameArray.includes(square)) {
-    console.log('please pick an available square');
     return 'please pick an available square';
   }
 
@@ -101,8 +53,6 @@ function playerTakeSquare(event, square) {
      newGame.resetGame();
   }
 
-
-
   renderGameBoard();
   retrieveWins();
 
@@ -111,14 +61,19 @@ function playerTakeSquare(event, square) {
 function retrieveWins() {
   var savedHeartWins = newGame.playerHeart.retrieveWinsFromStorage();
   var savedStarWins = newGame.playerStar.retrieveWinsFromStorage();
-  console.log('saved heart wins', savedHeartWins);
-  console.log('saved star wins', savedStarWins);
 
   newGame.playerHeart.wins = savedHeartWins;
   newGame.playerStar.wins = savedStarWins;
 
-  heartScore.innerText = `${newGame.playerHeart.token} ${newGame.playerHeart.wins} wins`;
-  starScore.innerText = `${newGame.playerStar.token} ${newGame.playerStar.wins} wins`;
+  heartScore.innerText = `${newGame.playerHeart.wins} wins`;
+  starScore.innerText = `${newGame.playerStar.wins} wins`;
+
+  if(newGame.playerHeart.wins === null) {
+    heartScore.innerText = `${newGame.playerHeart.token} 0 wins`;
+  }
+  if (newGame.playerStar.wins === null) {
+    starScore.innerText = `${newGame.playerStar.token} 0 wins`;
+  }
  }
 
  function renderGameBoard() {
@@ -143,4 +98,10 @@ function retrieveWins() {
    }
  }
 
- 
+function updateReferee() {
+  if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
+    referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
+  } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
+    referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
+  }
+}
