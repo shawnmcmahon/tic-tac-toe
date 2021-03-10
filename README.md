@@ -1,7 +1,7 @@
 # Tic Tac Toe Project
 
 ### Description
-Who doesn't love tic taco toe? It's everyone's favorite game to play at those restaurants with paper table clothes. I mean, really,  that's the only time we ever play this game, right? Well, if you are ever bored out of your mind, now you are able to play this game anywhere with wifi! Enjoy!
+Who doesn't love tic tac toe? It's everyone's favorite game to play at those restaurants with paper table clothes. I mean, really,  that's the only time we ever play this game, right? Well, if you are ever bored out of your mind, now you are able to play this game anywhere with wifi! Enjoy!
 
 ### How it Works
 - 2 teams: Heart versus Star
