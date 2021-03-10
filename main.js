@@ -40,16 +40,10 @@ function playerTakeSquare(event, square) {
   var square = event.target.id;
   console.log(square);
 
-  if(newGame.heartTurn) {
+  if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
     referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
-  } else if(newGame.starTurn) {
+  } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
     referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
-  } else if (newGame.heartWinDeclared) {
-    referee.innerHTML = `${newGame.playerHeart.token} won!`;
-    newGame.resetGame();
-  } else if (newGame.starWinDeclared) {
-    referee.innerHTML = `${newGame.playerStar.token} won!`;
-    newGame.resetGame();
   }
 
 
@@ -64,8 +58,16 @@ function playerTakeSquare(event, square) {
     newGame.heartMoves.push(square);
   //change button style to player style
     document.getElementById(square).innerText = `${newGame.playerHeart.token}`;
+    //update the dom to reflect the data model
+    //newGame.renderGameBoard();
+
   //check for a win using our checkForWinner function;
     newGame.checkForWinner();
+
+     if (newGame.heartWinDeclared) {
+      referee.innerText = `${newGame.playerHeart.token} won!`;
+      newGame.resetGame();
+    }
   //switch turns
     newGame.heartTurn = false;
     newGame.starTurn = true;
@@ -77,16 +79,26 @@ function playerTakeSquare(event, square) {
     newGame.starMoves.push(square);
     //change button style to player style
     document.getElementById(square).innerText = `${newGame.playerStar.token}`;
+    //update the dom to reflect the data model
+    //newGame.renderGameBoard();
   //check for a win using our checkForWinner function;
     newGame.checkForWinner();
+
+    if (newGame.starWinDeclared) {
+      referee.innerText = `${newGame.playerStar.token} won!`;
+      newGame.resetGame();
+    }
   //switch turns
     newGame.starTurn = false;
     newGame.heartTurn = true;
+
 
   } else if (!newGame.gameArray.includes(square)) {
     console.log('please pick an available square');
     return 'please pick an available square';
   }
+
+
 
 }
 
@@ -101,4 +113,26 @@ function retrieveWins() {
 
   heartScore.innerHTML = `Heart player has ${newGame.playerHeart.wins} wins`;
   starScore.innerHTML = `Star player has ${newGame.playerStar.wins} wins`;
+ }
+
+ function renderGameBoard() {
+   checkSpaceValue(a1, "a1");
+   checkSpaceValue(a2, "a2");
+   checkSpaceValue(a3, "a3");
+   checkSpaceValue(b1, "b1");
+   checkSpaceValue(b2, "b2");
+   checkSpaceValue(b3, "b3");
+   checkSpaceValue(c1, "c1");
+   checkSpaceValue(c2, "c2");
+   checkSpaceValue(c3, "c3");
+ }
+
+ function checkSpaceValue(space, id) {
+   if (newGame.gameArray.includes(id)) {
+     space.innerText = "";
+   } else if (newGame.heartArray.includes(id)) {
+     space.innerText = newGame.playerStar.token;
+   } else if (newGame.starArray.includes(id)) {
+     space.innerText = newGame.playerStar.token;
+   }
  }

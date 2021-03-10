@@ -34,6 +34,7 @@ section {
 
 button {
   background-color: white;
+  outline: none;
 
 }
 
@@ -76,7 +77,7 @@ button {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  weight: 50vw;
+  width: 50vw;
   align-items: center;
 
 
@@ -88,8 +89,8 @@ button {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  width: 300px;
-  height: 300px;
+  height: 75vh;
+  width: 50vw;
 
 
 }

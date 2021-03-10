@@ -64,13 +64,13 @@ class Game {
             //this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
           }
   }
-}
-
-  function resetGame() {
+  resetGame() {
     this.heartMoves = [];
     this.starMoves = [];
     this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
     this.heartWinDeclared = false;
     this.starWinDeclared = false;
+}
 
-  }
+
+}
