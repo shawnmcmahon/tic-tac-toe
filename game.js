@@ -9,7 +9,6 @@ class Game {
     this.playerStar = new Player({playerID: "star", token: "⭐", wins: 0});
     this.heartWinDeclared = false;
     this.starWinDeclared = false;
-
   }
 
   checkForWinner() {
@@ -23,7 +22,6 @@ class Game {
        this.heartMoves.includes("c1") && this.heartMoves.includes("b2") && this.heartMoves.includes("a3")) {
          this.playerHeart.wins++;
          this.playerHeart.saveWinsToStorage();
-         console.log('Heart player wins!');
          this.heartWinDeclared = true;
        } else if (this.starMoves.includes("a1") && this.starMoves.includes("a2") && this.starMoves.includes("a3") ||
           this.starMoves.includes("b1") && this.starMoves.includes("b2") && this.starMoves.includes("b3") ||
@@ -35,20 +33,17 @@ class Game {
           this.starMoves.includes("c1") && this.starMoves.includes("b2") && this.starMoves.includes("a3")) {
             this.playerStar.wins++;
             this.playerStar.saveWinsToStorage();
-            console.log('Star player wins');
             this.starWinDeclared = true;
-          } else if(this.gameArray.length === 0) {
-            console.log('The game is a tie!')
-            referee.innerText = 'The game is a tie!';
-          }
   }
+
+}
+
   resetGame() {
     this.heartMoves = [];
     this.starMoves = [];
     this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
     this.heartWinDeclared = false;
     this.starWinDeclared = false;
-}
-
+  }
 
 }
