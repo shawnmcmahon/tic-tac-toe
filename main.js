@@ -12,6 +12,7 @@ var gameBoard = document.querySelector('#gameBoard');
 var heartScore = document.querySelector('#heartWins');
 var starScore = document.querySelector('#starWins');
 var referee = document.querySelector('#referee');
+//variables
 var newGame = new Game({heartTurn: true, starTurn: false,
                         gameArray: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
                         heartMoves:[], starMoves:[]});
@@ -45,17 +46,19 @@ function playerTakeSquare(event, square) {
     return 'please pick an available square';
   }
 
-  if (newGame.heartWinDeclared) {
-   referee.innerText = `${newGame.playerHeart.token} won!`;
-   newGame.resetGame();
-  } else if (newGame.starWinDeclared) {
-     referee.innerText = `${newGame.playerStar.token} won!`;
-     newGame.resetGame();
-  } else if (!newGame.gameArray){
-    referee.innerText = "It's a tie!";
-  }
+  // if (newGame.heartWinDeclared) {
+  //  referee.innerText = `${newGame.playerHeart.token} won!`;
+  //  newGame.resetGame();
+  // } else if (newGame.starWinDeclared) {
+  //    referee.innerText = `${newGame.playerStar.token} won!`;
+  //    newGame.resetGame();
+  // } else if (!newGame.gameArray && !newGame.heartWinDeclared && !newGame.starWinDeclared){
+  //   newGame.resetGame();
+  //   referee.innerText = "It's a tie!";
+  //   //newGame.resetGame();
+  // }
 
-
+  declareResult();
   retrieveWins();
 
 }
@@ -102,7 +105,6 @@ function retrieveWins() {
  }
 
 function updateReferee() {
-  console.log("hey");
   if(!newGame.gameArray && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
     referee.innerText = `It's a tie!`;
   } else if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
@@ -111,5 +113,19 @@ function updateReferee() {
   } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
     referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
     console.log("star");
+  }
+}
+
+function declareResult() {
+  if (newGame.heartWinDeclared) {
+   referee.innerText = `${newGame.playerHeart.token} won!`;
+   newGame.resetGame();
+  } else if (newGame.starWinDeclared) {
+     referee.innerText = `${newGame.playerStar.token} won!`;
+     newGame.resetGame();
+  } else if (newGame.gameArray.length === 0){
+    newGame.resetGame();
+    referee.innerText = "It's a tie!";
+    //newGame.resetGame();
   }
 }
