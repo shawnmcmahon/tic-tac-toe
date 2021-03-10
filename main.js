@@ -68,7 +68,7 @@ function retrieveWins() {
   }
  }
 
- function renderGameBoard() {
+function renderGameBoard() {
    checkSpaceValue(a1, 'a1');
    checkSpaceValue(a2, 'a2');
    checkSpaceValue(a3, 'a3');
@@ -78,7 +78,7 @@ function retrieveWins() {
    checkSpaceValue(c1, 'c1');
    checkSpaceValue(c2, 'c2');
    checkSpaceValue(c3, 'c3');
- }
+}
 
 function checkSpaceValue(space, id) {
   space.innerText = newGame.playerStar.token;
