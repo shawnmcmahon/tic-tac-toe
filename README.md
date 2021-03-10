@@ -24,7 +24,7 @@ Who doesn't love tic taco toe? It's everyone's favorite game to play at those re
 - Shawn McMahon
 
 #### Demo
-![](https://gph.is/g/aNL6WGo)
+![tic-tac-toe-gif](https://user-images.githubusercontent.com/73731359/110699437-17e25900-81ac-11eb-93da-9c898fa6d760.gif)
 
 #### Github Pages
 ![](https://shawnmcmahon.github.io/tic-tac-toe/)
