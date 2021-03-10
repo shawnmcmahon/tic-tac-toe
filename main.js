@@ -23,7 +23,7 @@ window.addEventListener('load', retrieveWins);
 //functions
 function playerTakeSquare(event, square) {
   var square = event.target.id;
-
+  renderGameBoard();
   updateReferee();
   if (newGame.heartTurn && newGame.gameArray.includes(square)) {
     var selectedSquareIndex = newGame.gameArray.indexOf(square);
@@ -51,9 +51,11 @@ function playerTakeSquare(event, square) {
   } else if (newGame.starWinDeclared) {
      referee.innerText = `${newGame.playerStar.token} won!`;
      newGame.resetGame();
+  } else if (!newGame.gameArray){
+    referee.innerText = "It's a tie!";
   }
 
-  renderGameBoard();
+
   retrieveWins();
 
 }
@@ -69,10 +71,10 @@ function retrieveWins() {
   starScore.innerText = `${newGame.playerStar.wins} wins`;
 
   if(newGame.playerHeart.wins === null) {
-    heartScore.innerText = `${newGame.playerHeart.token} 0 wins`;
+    heartScore.innerText = `0 wins`;
   }
   if (newGame.playerStar.wins === null) {
-    starScore.innerText = `${newGame.playerStar.token} 0 wins`;
+    starScore.innerText = `0 wins`;
   }
  }
 
@@ -89,6 +91,7 @@ function retrieveWins() {
  }
 
  function checkSpaceValue(space, id) {
+   space.innerText = newGame.playerStar.token;
    if (newGame.gameArray.includes(id)) {
      space.innerText = "";
    } else if (newGame.heartMoves.includes(id)) {
@@ -99,9 +102,14 @@ function retrieveWins() {
  }
 
 function updateReferee() {
-  if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
-    referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
-  } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
+  console.log("hey");
+  if(!newGame.gameArray && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
+    referee.innerText = `It's a tie!`;
+  } else if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
+    console.log("heart");
     referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
+  } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
+    referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
+    console.log("star");
   }
 }

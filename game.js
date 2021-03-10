@@ -5,8 +5,8 @@ class Game {
     this.gameArray = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
     this.heartMoves = [];
     this.starMoves = [];
-    this.playerHeart = new Player({playerID: "heart", token: "heart", wins: 0});
-    this.playerStar = new Player({playerID: "star", token: "star", wins: 0});
+    this.playerHeart = new Player({playerID: "heart", token: "❤️", wins: 0});
+    this.playerStar = new Player({playerID: "star", token: "⭐", wins: 0});
     this.heartWinDeclared = false;
     this.starWinDeclared = false;
 
@@ -39,6 +39,7 @@ class Game {
             this.starWinDeclared = true;
           } else if(this.gameArray.length === 0) {
             console.log('The game is a tie!')
+            referee.innerText = 'The game is a tie!';
           }
   }
   resetGame() {
