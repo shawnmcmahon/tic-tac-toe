@@ -43,24 +43,11 @@ function playerTakeSquare(event, square) {
     newGame.starTurn = false;
     newGame.heartTurn = true;
   } else if (!newGame.gameArray.includes(square)) {
-    return 'please pick an available square';
+    referee.innerText =  'Please pick an available square';
   }
-
-  // if (newGame.heartWinDeclared) {
-  //  referee.innerText = `${newGame.playerHeart.token} won!`;
-  //  newGame.resetGame();
-  // } else if (newGame.starWinDeclared) {
-  //    referee.innerText = `${newGame.playerStar.token} won!`;
-  //    newGame.resetGame();
-  // } else if (!newGame.gameArray && !newGame.heartWinDeclared && !newGame.starWinDeclared){
-  //   newGame.resetGame();
-  //   referee.innerText = "It's a tie!";
-  //   //newGame.resetGame();
-  // }
 
   declareResult();
   retrieveWins();
-
 }
 
 function retrieveWins() {
@@ -105,14 +92,10 @@ function retrieveWins() {
  }
 
 function updateReferee() {
-  if(!newGame.gameArray && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
-    referee.innerText = `It's a tie!`;
-  } else if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
-    console.log("heart");
+  if(newGame.heartTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
     referee.innerText = `It's ${newGame.playerStar.token}'s turn`;
   } else if(newGame.starTurn && !newGame.heartWinDeclared && !newGame.starWinDeclared) {
     referee.innerText = `It's ${newGame.playerHeart.token}'s turn`;
-    console.log("star");
   }
 }
 
@@ -123,9 +106,12 @@ function declareResult() {
   } else if (newGame.starWinDeclared) {
      referee.innerText = `${newGame.playerStar.token} won!`;
      newGame.resetGame();
-  } else if (newGame.gameArray.length === 0){
+  } else if (newGame.gameArray.length === 0 && newGame.heartTurn){
     newGame.resetGame();
-    referee.innerText = "It's a tie!";
-    //newGame.resetGame();
-  }
+    referee.innerText = "It's a draw! ❤️, your turn." ;
+  } else if (newGame.gameArray.length === 0 && newGame.starTurn){
+    newGame.resetGame();
+    referee.innerText = "It's a draw! ⭐️, your turn.";
+}
+
 }
