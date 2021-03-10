@@ -104,6 +104,7 @@ function playerTakeSquare(event, square) {
 
 
   renderGameBoard();
+  retrieveWins();
 
 }
 
@@ -141,3 +142,5 @@ function retrieveWins() {
      space.innerText = newGame.playerStar.token;
    }
  }
+
+ 
