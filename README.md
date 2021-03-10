@@ -19,6 +19,7 @@ Who doesn't love tic taco toe? It's everyone's favorite game to play at those re
 - Add reset win count button
 - Invite a friend to play on there computer
 - Add different skins for board and pieces.
+- Refactor checkForWinner functionality
 
 #### Contributors:
 - Shawn McMahon
